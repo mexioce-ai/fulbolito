@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Futbolito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,600;1,700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+<style>
+/* Idea de layout: cabecera de señal deportiva. Logo a la izquierda, cartelera del día a la derecha, franja azul de pestañas inclinadas con etiqueta negra. Debajo, banner de banderas y filas que se abren en niveles. */
+:root{
+  --paper:#e9eff6; --card:#ffffff; --ink:#10233a; --muted:#52647a; --line:#c9d6e4;
+  --accent:#0f5fa8; --accent-ink:#ffffff;
+  --navy:#0a2140; --navy-2:#103a6b; --sky:#2f93dc; --sky-2:#1a6db6; --head-ink:#eef5fc;
+  --alta:#1f7a4d; --media:#a86a00; --baja:#768392;
+  --home:#0f4c81; --draw:#a9a391; --away:#b5452c;
+  --f-display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,sans-serif;
+  --f-flag:"Noto Color Emoji","Apple Color Emoji","Segoe UI Emoji",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#081423; --card:#0f2137; --ink:#e6eef7; --muted:#93a7bd; --line:#213750;
+    --accent:#62b5f2; --accent-ink:#081423;
+    --navy:#061a33; --navy-2:#0c2f58; --sky:#2a86cc; --sky-2:#175f9f; --head-ink:#eef5fc;
+    --alta:#5ec48f; --media:#e3ad4a; --baja:#8d9aa8;
+    --home:#6fb1e8; --draw:#59626d; --away:#e58a70;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#081423; --card:#0f2137; --ink:#e6eef7; --muted:#93a7bd; --line:#213750;
+  --accent:#62b5f2; --accent-ink:#081423;
+  --navy:#061a33; --navy-2:#0c2f58; --sky:#2a86cc; --sky-2:#175f9f; --head-ink:#eef5fc;
+  --alta:#5ec48f; --media:#e3ad4a; --baja:#8d9aa8;
+  --home:#6fb1e8; --draw:#59626d; --away:#e58a70;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:.01em}
+h2{font-size:22px;font-weight:600;text-transform:uppercase}
+h3{font-size:17px;font-weight:600;text-transform:uppercase;color:var(--muted)}
+a{color:var(--accent)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+.inner{max-width:860px;margin:0 auto;padding:0 16px}
+
+/* Cabecera */
+.top{color:var(--head-ink);background:
+  repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 9px),
+  radial-gradient(120% 140% at 80% 0%,var(--navy-2),var(--navy) 62%)}
+.top .inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px}
+.brand{flex:1 1 240px;min-width:0}
+.brand h1{font-size:0;line-height:0}
+.brand img{display:block;height:54px;width:auto;max-width:100%}
+.brand p{margin:8px 0 0;font-size:13px;opacity:.9;max-width:46ch}
+.side{flex:0 1 330px;margin-left:auto;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.daynav{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:nowrap;white-space:nowrap}
+.daynav .date{font-family:var(--f-display);font-size:17px;font-weight:600;text-transform:uppercase}
+.daynav button{background:var(--sky);color:#fff;border:0;border-radius:3px;padding:5px 10px;font-family:var(--f-display);font-size:15px;font-weight:700;text-transform:uppercase}
+.bill{width:100%;background:rgba(6,20,40,.55);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:8px 12px}
+.bill b{display:block;text-align:right;font-family:var(--f-display);font-style:italic;font-size:14px;font-weight:600;opacity:.85}
+.bill a{display:flex;justify-content:space-between;gap:10px;color:var(--head-ink);text-decoration:none;font-family:var(--f-display);font-size:16px;font-weight:600;line-height:1.35}
+.bill a::before{content:"»";color:var(--sky);margin-right:4px}
+.bill a span:first-child{flex:1;min-width:0;overflow-wrap:anywhere}
+.bill a span:last-child{font-variant-numeric:tabular-nums}
+
+/* Franja de pestañas */
+.cats{background:linear-gradient(var(--sky),var(--sky-2));border-top:1px solid rgba(255,255,255,.35);border-bottom:2px solid var(--navy)}
+.cats .inner{display:flex;align-items:stretch;overflow-x:auto;padding-top:0;padding-bottom:0}
+.tag{flex:0 0 auto;background:#0b0f14;color:#fff;font-family:var(--f-display);font-style:italic;font-weight:700;font-size:14px;text-transform:uppercase;padding:6px 16px 6px 12px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%);display:flex;align-items:center;margin-right:2px}
+.cat{flex:0 0 auto;background:none;border:0;border-right:1px solid rgba(255,255,255,.3);color:#fff;font-family:var(--f-display);font-weight:700;font-size:14px;padding:6px 12px;white-space:nowrap;text-shadow:0 1px 0 rgba(0,0,0,.25)}
+.cat small{font-weight:600;font-size:11px;opacity:.8;margin-left:4px}
+.cat[aria-pressed="true"]{background:#fff;color:var(--sky-2);text-shadow:none}
+
+.wrap{max-width:760px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-direction:column;gap:20px}
+.flag{font-family:var(--f-flag);font-size:1.25em;line-height:1}
+.code{font-family:var(--f-display);font-weight:700;font-size:12px;border:1px solid var(--line);border-radius:3px;padding:1px 4px}
+.banner{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.chip{flex:0 0 auto;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:74px}
+.chip.star{border-color:var(--accent);border-width:2px}
+.chip .fl{display:flex;gap:4px;align-items:center;font-size:17px}
+.chip .tm{font-family:var(--f-display);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.group{display:flex;flex-direction:column;gap:8px}
+.match{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.match.star{border-left:4px solid var(--accent)}
+.row{width:100%;background:none;border:0;text-align:left;padding:12px;display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center}
+.row .tm{font-family:var(--f-display);font-size:21px;font-weight:600;font-variant-numeric:tabular-nums}
+.teams{display:flex;flex-direction:column;gap:2px;min-width:0}
+.teams span.t{display:flex;gap:7px;align-items:center;font-weight:500}
+.row .go{font-family:var(--f-display);font-size:14px;color:var(--accent);text-transform:uppercase;font-weight:600;white-space:nowrap}
+.prob{display:flex;flex-direction:column;gap:4px;padding:0 12px 12px}
+.bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--line)}
+.bar i{display:block;height:100%}
+.bar .h{background:var(--home)} .bar .d{background:var(--draw)} .bar .a{background:var(--away)}
+.problab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;gap:8px;flex-wrap:wrap}
+.detail{border-top:1px solid var(--line);padding:14px 12px;display:flex;flex-direction:column;gap:14px}
+.lvl{display:flex;flex-direction:column;gap:8px}
+.lvl p{margin:0;max-width:65ch}
+.lvl ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;max-width:65ch}
+.press{display:flex;flex-direction:column;gap:6px}
+.press a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:8px 10px;text-decoration:none;color:var(--ink)}
+.press a b{color:var(--accent);font-weight:600}
+.press a.sec{border-style:dashed;color:var(--muted)}
+.more{align-self:flex-start;background:none;border:1px solid var(--accent);color:var(--accent);border-radius:4px;padding:8px 12px;font-family:var(--f-display);font-size:16px;font-weight:600;text-transform:uppercase}
+.dato{border-left:4px solid var(--sky);background:var(--paper);padding:10px 12px;border-radius:0 4px 4px 0}
+.dato b{display:block;font-family:var(--f-display);font-size:19px;font-weight:700;line-height:1.2}
+.dato span{color:var(--muted);font-size:13.5px}
+.tip{border:1px solid var(--line);border-radius:4px;padding:10px;display:grid;grid-template-columns:1fr auto;gap:4px 10px;background:var(--paper)}
+.tip .k{font-family:var(--f-display);font-size:13px;text-transform:uppercase;color:var(--muted);font-weight:600;grid-column:1/-1}
+.tip .t{font-weight:600}
+.tip .w{grid-column:1/-1;color:var(--muted);font-size:13.5px}
+.conf{font-family:var(--f-display);font-size:13px;font-weight:700;text-transform:uppercase;padding:2px 8px;border-radius:10px;border:1.5px solid;align-self:start;white-space:nowrap}
+.conf.alta{color:var(--alta)} .conf.media{color:var(--media)} .conf.baja{color:var(--baja);border-style:dashed}
+
+/* Cancha: solo líneas, al centro; local a la izquierda, visita a la derecha */
+.al{display:grid;grid-template-columns:minmax(0,1fr) clamp(104px,30%,170px) minmax(0,1fr);gap:10px;align-items:center}
+.al.nopitch{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.al svg{display:block;width:100%;height:auto}
+.al svg .ln{fill:none;stroke:var(--muted);stroke-width:.5;opacity:.6}
+.al svg text{font-family:var(--f-display);font-weight:700;font-size:4.4px;text-anchor:middle;dominant-baseline:central}
+.sq{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sq.r{align-items:flex-end;text-align:right}
+.sq h4{margin:0;font-family:var(--f-body);font-size:15px;font-weight:600;line-height:1.2}
+.sq .meta{font-size:12px;color:var(--muted);margin-bottom:3px}
+.sq .p{display:flex;align-items:center;gap:7px;font-family:var(--f-body);font-size:14.5px;font-weight:500;line-height:1.3;min-width:0}
+.sq .p.gap{margin-top:7px}
+.sq.r .p{flex-direction:row-reverse}
+.sq .p span{overflow-wrap:anywhere}
+.sq .n{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:1px solid var(--muted);font-variant-numeric:tabular-nums}
+.sq .n.dot{width:10px;height:10px}
+.sites{display:flex;flex-wrap:wrap;gap:6px}
+.sites a{font-size:13px;border:1px solid var(--line);border-radius:12px;padding:3px 10px;text-decoration:none;background:var(--card)}
+.note{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.note ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.note .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.small{font-size:13px;color:var(--muted)}
+.empty{color:var(--muted);padding:8px 0}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="inner">
+    <div class="brand">
+      <h1>Futbolito<img src="logo.png" alt="Fulbolito.cl"></h1>
+      <p id="sub"></p>
+    </div>
+    <div class="side">
+      <div class="daynav">
+        <span class="date" id="dateLabel"></span>
+        <button id="dayBtn" type="button"></button>
+      </div>
+      <div class="bill" id="bill"></div>
+    </div>
+  </div>
+</header>
+<nav class="cats" aria-label="Filtrar por competencia"><div class="inner"><span class="tag">Partidos</span><span id="cats" style="display:flex"></span></div></nav>
+
+<div class="wrap">
+  <nav class="banner" id="banner" aria-label="Partidos del día"></nav>
+  <main id="list" class="group" style="gap:20px"></main>
+
+  <section class="note">
+    <div class="hd"><h2>Ponte al día</h2><button class="more" type="button" id="rot">Otros datos</button></div>
+    <h3 id="pdTitle"></h3>
+    <ul id="pdList"></ul>
+  </section>
+
+  <section class="note">
+    <h2>Tus sitios de estadísticas</h2>
+    <div class="sites" id="sites"></div>
+    <p class="small">Esta página no lee esos sitios en vivo: se arma una vez al día con búsqueda web. Última actualización: <span id="upd"></span>. Las barras 1X2 y el marcador probable vienen de modelos estadísticos públicos. El dato certero y los tips salen solo de resultados y estadísticas de partidos anteriores. Donde no hay estadística previa de córners o tarjetas, no hay tip. Los enlaces con borde punteado llevan a la sección de fútbol del medio local porque no había una nota específica. Nada de esto es certeza. Si apuestas, hazlo con moderación.</p>
+  </section>
+</div>
+
+<script src="data.js"></script>
+<script>
+const SITES=[["Sofascore","https://www.sofascore.com/es-la"],["FotMob","https://www.fotmob.com/es"],["FBref","https://fbref.com/en/"],["WhoScored","https://es.whoscored.com/"],["FootyStats","https://footystats.org/"],["Understat","https://understat.com/"],["BeSoccer","https://es.besoccer.com/"],["Transfermarkt","https://www.transfermarkt.es/"],["Ceroacero","https://www.ceroacero.es/"],["Football-Data","https://www.football-data.co.uk/"],["Balonario (modelo)","https://balonario.com/pronosticos/"]];
+let day="hoy", cat="all"; const open={};
+const start=new Date(new Date().getFullYear(),0,0);
+let pd=Math.floor((Date.now()-start)/864e5)%PD.length;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const flag=k=>k==="club"?'<span class="code">CLUB</span>':(F[k]?'<span class="flag">'+F[k]+'</span>':'<span class="code">'+esc(String(k).toUpperCase())+'</span>');
+const ul=a=>'<ul>'+a.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>';
+
+function probHTML(m){
+  if(!m.p) return "";
+  const [h,d,a]=m.p;
+  return '<div class="prob"><div class="bar" role="img" aria-label="Local '+h+'%, empate '+d+'%, visita '+a+'%"><i class="h" style="width:'+h+'%"></i><i class="d" style="width:'+d+'%"></i><i class="a" style="width:'+a+'%"></i></div>'+
+  '<div class="problab"><span>Local '+h+'%</span><span>Empate '+d+'%</span><span>Visita '+a+'%</span>'+(m.sc?'<span>Marcador probable '+esc(m.sc)+'</span>':'')+'</div></div>';
+}
+
+const openAl={};
+function linesOf(t){const L=String(t.f).split("-").map(Number);let i=1;const rows=[[0]];L.forEach(n=>{const r=[];for(let k=0;k<n;k++)r.push(i++);rows.push(r);});return rows;}
+function dots(t,top){
+  const rows=linesOf(t), n=rows.length-1; let s="";
+  rows.forEach((r,ri)=>{
+    const d=ri===0?5:13+(ri-1)*(n>1?33/(n-1):0);
+    const y=top?d:105-d;
+    r.forEach((ix,k)=>{const xx=68*(k+.5)/r.length; const x=top?68-xx:xx;
+      s+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.4" fill="'+esc(t.col[0])+'" stroke="var(--muted)" stroke-width=".35"/>';});
+  });
+  return s;
+}
+function pitchSVG(h,a){
+  return '<svg viewBox="-1 -1 70 107" role="img" aria-label="Cancha con la formación"><g class="ln"><rect x="0" y="0" width="68" height="105"/><line x1="0" y1="52.5" x2="68" y2="52.5"/><circle cx="34" cy="52.5" r="9.15"/><rect x="13.85" y="0" width="40.3" height="16.5"/><rect x="24.85" y="0" width="18.3" height="5.5"/><rect x="13.85" y="88.5" width="40.3" height="16.5"/><rect x="24.85" y="99.5" width="18.3" height="5.5"/><path d="M26.7 16.5 A9.15 9.15 0 0 0 41.3 16.5"/><path d="M26.7 88.5 A9.15 9.15 0 0 1 41.3 88.5"/></g>'+(a?dots(a,true):"")+(h?dots(h,false):"")+'</svg>';
+}
+function squad(t,name,side,hasXi){
+  const c=(t&&t.col)||["#888","#fff"];
+  let s='<div class="sq '+side+'"><h4>'+esc(name)+'</h4>';
+  if(!t) return s+'<div class="meta">Sin información todavía</div></div>';
+  if(hasXi){
+    s+='<div class="meta">'+esc(t.f)+(t.est?' · '+esc(t.est):'')+'</div>';
+    const first=new Set(linesOf(t).map(r=>r[0]));
+    s+=t.xi.map((p,ix)=>'<div class="p'+(ix>0&&first.has(ix)?' gap':'')+'">'+(p[1]!=null?'<b class="n" style="background:'+esc(c[0])+';color:'+esc(c[1])+'">'+esc(p[1])+'</b>':'<b class="n dot" style="background:'+esc(c[0])+'"></b>')+'<span>'+esc(p[0])+'</span></div>').join("");
+  }else{
+    s+='<div class="meta">'+(t.f?'Formación posible '+esc(t.f):'Sin once ni formación')+(t.dest&&t.dest.length?' · destacados':'')+'</div>';
+    s+=(t.dest||[]).map(n=>'<div class="p"><b class="n dot" style="background:'+esc(c[0])+'"></b><span>'+esc(n)+'</span></div>').join("");
+  }
+  return s+'</div>';
+}
+function alHTML(m){
+  const al=m.al; if(!al) return "";
+  const hx=!!(al.h&&al.h.xi&&al.h.f), ax=!!(al.a&&al.a.xi&&al.a.f);
+  const conf=hx&&ax&&[al.h,al.a].every(t=>t.est==="confirmada");
+  const title=(hx||ax)?(conf?"Alineaciones confirmadas":"Alineaciones posibles"):((al.h&&al.h.f)||(al.a&&al.a.f)?"Formación posible y destacados":"Jugadores destacados");
+  let s='<button class="more" type="button" data-al="'+m.id+'" aria-expanded="'+(openAl[m.id]?'true':'false')+'">'+title+(openAl[m.id]?' ▴':' ▾')+'</button>';
+  if(!openAl[m.id]) return s;
+  s+='<div class="lvl"><div class="al'+((hx||ax)?'':' nopitch')+'">'+squad(al.h,m.h[0],"l",hx)+((hx||ax)?pitchSVG(hx?al.h:null,ax?al.a:null):"")+squad(al.a,m.a[0],"r",ax)+'</div>';
+  if(hx||ax) s+='<p class="small">Local abajo, visita arriba. Las listas van del arquero al ataque, separadas por línea.</p>';
+  if(al.fuente) s+='<p class="small">Fuente: '+esc(al.fuente)+'.</p>';
+  return s+'</div>';
+}
+function detailHTML(m){
+  const lv=open[m.id]||0; if(!lv) return "";
+  let s='<div class="detail"><div class="lvl"><h3>Qué se juega</h3><p>'+esc(m.juego||"")+'</p>';
+  if(m.prensa&&m.prensa.length){s+='<div class="press">'+m.prensa.map(p=>'<a'+(p[3]?' class="sec"':'')+' href="'+esc(p[2])+'" target="_blank" rel="noopener"><b>'+esc(p[1])+'</b> · '+esc(p[0])+'</a>').join("")+'</div>';}
+  s+='</div>';
+  s+=alHTML(m);
+  const has2=m.h2h||m.racha||m.bajas||m.dato;
+  const label=(m.h2h||m.racha)?"Mano a mano, racha y dato certero":"Dato certero";
+  if(has2&&lv<2) s+='<button class="more" type="button" data-more="'+m.id+'">'+label+'</button>';
+  if(has2&&lv>=2){
+    if(m.h2h) s+='<div class="lvl"><h3>Mano a mano</h3>'+ul(m.h2h)+'</div>';
+    if(m.racha) s+='<div class="lvl"><h3>Racha</h3>'+ul(m.racha)+'</div>';
+    if(m.bajas) s+='<div class="lvl"><h3>Bajas y novedades</h3>'+ul(m.bajas)+'</div>';
+    if(m.dato) s+='<div class="lvl"><h3>Dato certero</h3><div class="dato"><b>'+esc(m.dato[0])+'</b><span>'+esc(m.dato[1])+'</span></div></div>';
+  }
+  const ready=m.tips&&m.tips.length&&(!has2||lv>=2);
+  if(ready&&lv<3) s+='<button class="more" type="button" data-more="'+m.id+'">Ver hot tips</button>';
+  if(ready&&lv>=3){
+    s+='<div class="lvl"><h3>Hot tips</h3>'+m.tips.map(t=>'<div class="tip"><span class="k">'+esc(t[0])+'</span><span class="t">'+esc(t[1])+'</span><span class="conf '+esc(t[2])+'">Confianza '+esc(t[2])+'</span><span class="w">'+esc(t[3])+'</span></div>').join("");
+    if(m.nd) s+='<p class="small">Sin estadística de partidos previos para '+esc(m.nd)+': no doy tip ahí.</p>';
+    s+='</div>';
+  }
+  return s+'</div>';
+}
+function render(){
+  const all=M.filter(m=>m.day===day).sort((a,b)=>a.t.localeCompare(b.t));
+  const ms=all.filter(m=>cat==="all"||m.cat===cat);
+  document.getElementById("sub").textContent=SUB[day];
+  document.getElementById("dateLabel").textContent=FECHA[day]+" · hora de Chile";
+  document.getElementById("dayBtn").textContent=day==="hoy"?"Mañana →":"← Hoy";
+  const stars=all.filter(m=>m.star).slice(0,3);
+  document.getElementById("bill").innerHTML='<b>'+(day==="hoy"?"Hoy":"Mañana")+' por Fulbolito</b>'+stars.map(m=>'<a href="#" data-jump="'+m.id+'"><span>'+esc(m.h[0]+" - "+m.a[0])+'</span><span>'+m.t+'</span></a>').join("");
+  document.getElementById("cats").innerHTML=CATS.map(c=>{const n=c[0]==="all"?all.length:all.filter(m=>m.cat===c[0]).length;return n?'<button type="button" class="cat" data-cat="'+c[0]+'" aria-pressed="'+(cat===c[0])+'">'+esc(c[1])+'<small>'+n+'</small></button>':"";}).join("");
+  document.getElementById("banner").innerHTML=ms.map(m=>'<button type="button" class="chip'+(m.star?' star':'')+'" data-jump="'+m.id+'" aria-label="'+esc(m.h[0]+' vs '+m.a[0])+'"><span class="fl">'+flag(m.h[1])+flag(m.a[1])+'</span><span class="tm">'+m.t+'</span></button>').join("");
+  const order=CATS.map(c=>c[0]).filter(c=>c!=="all");
+  document.getElementById("list").innerHTML=order.filter(g=>ms.some(m=>m.cat===g)).map(g=>'<section class="group"><h2>'+esc(CATNAME[g]||g)+'</h2>'+ms.filter(m=>m.cat===g).map(m=>
+    '<article class="match'+(m.star?' star':'')+'" id="m-'+m.id+'"><button class="row" type="button" data-toggle="'+m.id+'" aria-expanded="'+(open[m.id]?'true':'false')+'"><span class="tm">'+m.t+'</span><span class="teams"><span class="t">'+flag(m.h[1])+esc(m.h[0])+'</span><span class="t">'+flag(m.a[1])+esc(m.a[0])+'</span></span><span class="go">'+(open[m.id]?'Cerrar':'Ver')+'</span></button>'+probHTML(m)+detailHTML(m)+'</article>').join("")+'</section>').join("")||'<p class="empty">No hay partidos en esta categoría.</p>';
+  document.getElementById("pdTitle").textContent=PD[pd][0];
+  document.getElementById("pdList").innerHTML=PD[pd][1].map(x=>'<li>'+esc(x)+'</li>').join("");
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-toggle],[data-more],[data-al],[data-jump],[data-cat],#dayBtn,#rot"); if(!t) return;
+  if(t.id==="dayBtn"){day=day==="hoy"?"man":"hoy";cat="all";render();return;}
+  if(t.id==="rot"){pd=(pd+1)%PD.length;render();return;}
+  if(t.dataset.al){const id=t.dataset.al;openAl[id]=!openAl[id];render();return;}
+  if(t.dataset.cat){cat=t.dataset.cat;render();return;}
+  if(t.dataset.toggle){const id=t.dataset.toggle;open[id]=open[id]?0:1;render();return;}
+  if(t.dataset.more){const id=t.dataset.more;open[id]=(open[id]||1)+1;render();return;}
+  if(t.dataset.jump){e.preventDefault();const id=t.dataset.jump;const m=M.find(x=>x.id===id);if(cat!=="all"&&m&&m.cat!==cat)cat="all";if(!open[id])open[id]=1;render();const el=document.getElementById("m-"+id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});}
+});
+document.getElementById("sites").innerHTML=SITES.map(s=>'<a href="'+s[1]+'" target="_blank" rel="noopener">'+s[0]+'</a>').join("");
+document.getElementById("upd").textContent=ACTUALIZADO;
+render();
+</script>
+</body>
+</html>
