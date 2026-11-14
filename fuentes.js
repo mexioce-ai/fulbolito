@@ -1,8 +1,24 @@
-/* Fulbolito · medios locales por país (lista del usuario). No lo usa la página; es referencia para la actualización diaria.
-   Regla: 1) RSS del medio, 2) portada del mismo medio, 3) segundo medio más relevante del país.
-   Ya probado: BBC (web y RSS) y Marca (web y RSS) no permiten lectura automática: usar otro medio del país.
-   Aktuality (Eslovaquia) bloqueado. Mozzart Sport tiene RSS de fútbol: https://www.mozzartsport.com/rss/1.xml
-   Sudamérica (usados antes): Argentina: La Capital, El Gráfico. Chile: CNN Chile, BioBioChile. Colombia: Futbolred, La Patria. Perú: RPP, Líbero, Depor. */
+/* Fulbolito · medios locales por pais (lista del usuario). No lo usa la pagina; es referencia para la actualizacion diaria.
+   Regla: 1) RSS del medio, 2) portada del mismo medio, 3) segundo medio mas relevante del pais.
+
+   PROBADO Y BLOQUEADO (no se dejan leer automaticamente, ni la web ni el RSS). Usar otro medio del pais:
+   - BBC  -> Inglaterra, Escocia, Gales, Irlanda del Norte
+   - Marca -> Espana
+   - Aktuality Sport -> Eslovaquia
+   - Mozzart Sport (Serbia): la portada falla, pero el RSS de futbol SI funciona:
+     https://www.mozzartsport.com/rss/1.xml  (indice de feeds: https://www.mozzartsport.com/rss)
+   - Sportal.bg (Bulgaria): carga, pero no se encontro nota del partido.
+
+   SIN URL DIRECTA en la lista original (venian como busqueda de Google): Andorra, Finlandia, Gibraltar,
+   Islandia, Islas Feroe, Kosovo, Malta, Serbia. Para esos hace falta la direccion real del medio.
+
+   MEDIOS QUE SI FUNCIONARON: Voetbal International (NL), SNportal (SI), Moldfootball (MD),
+   L'essentiel (LU), Vaterland (LI), A Bola (PT), TV4 (SE), Tiroler Tageszeitung (AT),
+   Flashscore Rumania (RO), The Irish News (IE/NIR), Express & Star (WAL).
+
+   SUDAMERICA (usados y funcionando): Argentina: La Capital, El Grafico, Los Andes, A24, Noticias Argentinas.
+   Chile: Al Aire Libre, Cooperativa, El Rancagueino, BioBioChile, Redgol. Colombia: Futbolred, La Patria.
+   Peru: RPP, Libero, Depor, Infobae Peru, El Comercio. Brasil: VAVEL, CNN Brasil, Lance!, ABC do ABC. */
 const FUENTES={
  "Albania": "https://www.panorama.com.al/sport/",
  "Alemania": "https://www.kicker.de",
