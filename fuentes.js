@@ -1,156 +1,83 @@
-/* enbiei · medios locales por franquicia. No lo usa la pagina; es la referencia para la actualizacion diaria.
-   Regla: 1) RSS del medio, 2) la seccion del equipo, 3) otro medio del mismo mercado si el primero falla. */
-const MEDIOS={
- "ATL": [
-  "Atlanta Hawks",
-  "The Atlanta Journal-Constitution",
-  "https://www.ajc.com/sports/atlanta-hawks/"
- ],
- "BOS": [
-  "Boston Celtics",
-  "Boston Globe",
-  "https://www.bostonglobe.com/sports/celtics/"
- ],
- "BKN": [
-  "Brooklyn Nets",
-  "New York Post",
-  "https://nypost.com/tag/brooklyn-nets/"
- ],
- "CHA": [
-  "Charlotte Hornets",
-  "The Charlotte Observer",
-  "https://www.charlotteobserver.com/sports/charlotte-hornets/"
- ],
- "CHI": [
-  "Chicago Bulls",
-  "NBC Sports Chicago",
-  "https://www.nbcsportschicago.com/chicago-bulls"
- ],
- "CLE": [
-  "Cleveland Cavaliers",
-  "Cleveland.com",
-  "https://www.cleveland.com/cavs/"
- ],
- "DAL": [
-  "Dallas Mavericks",
-  "Dallas Morning News",
-  "https://www.dallasnews.com/sports/mavericks/"
- ],
- "DEN": [
-  "Denver Nuggets",
-  "Denver Post",
-  "https://www.denverpost.com/tag/denver-nuggets/"
- ],
- "DET": [
-  "Detroit Pistons",
-  "MLive",
-  "https://www.mlive.com/pistons/"
- ],
- "GSW": [
-  "Golden State Warriors",
-  "The Mercury News",
-  "https://www.mercurynews.com/tag/golden-state-warriors/"
- ],
- "HOU": [
-  "Houston Rockets",
-  "Houston Chronicle",
-  "https://www.houstonchronicle.com/sports/rockets/"
- ],
- "IND": [
-  "Indiana Pacers",
-  "IndyStar",
-  "https://www.indystar.com/sports/pacers/"
- ],
- "LAC": [
-  "LA Clippers",
-  "Los Angeles Times",
-  "https://www.latimes.com/sports/clippers/"
- ],
- "LAL": [
-  "Los Angeles Lakers",
-  "Lakers Nation",
-  "https://www.lakersnation.com"
- ],
- "MEM": [
-  "Memphis Grizzlies",
-  "Commercial Appeal",
-  "https://www.commercialappeal.com/sports/grizzlies/"
- ],
- "MIA": [
-  "Miami Heat",
-  "Miami Herald",
-  "https://www.miamiherald.com/sports/nba/miami-heat/"
- ],
- "MIL": [
-  "Milwaukee Bucks",
-  "Milwaukee Journal Sentinel",
-  "https://www.jsonline.com/sports/bucks/"
- ],
- "MIN": [
-  "Minnesota Timberwolves",
-  "Star Tribune",
-  "https://www.startribune.com/minnesota-timberwolves/"
- ],
- "NOP": [
-  "New Orleans Pelicans",
-  "NOLA.com",
-  "https://www.nola.com/sports/pelicans/"
- ],
- "NYK": [
-  "New York Knicks",
-  "New York Daily News",
-  "https://www.nydailynews.com/sports/basketball/knicks/"
- ],
- "OKC": [
-  "Oklahoma City Thunder",
-  "The Oklahoman",
-  "https://www.oklahoman.com/sports/thunder/"
- ],
- "ORL": [
-  "Orlando Magic",
-  "Orlando Sentinel",
-  "https://www.orlandosentinel.com/sports/orlando-magic/"
- ],
- "PHI": [
-  "Philadelphia 76ers",
-  "PhillyVoice",
-  "https://www.phillyvoice.com/topics/philadelphia-76ers/"
- ],
- "PHX": [
-  "Phoenix Suns",
-  "AZ Central",
-  "https://www.azcentral.com/sports/suns/"
- ],
- "POR": [
-  "Portland Trail Blazers",
-  "The Oregonian",
-  "https://www.oregonlive.com/blazers/"
- ],
- "SAC": [
-  "Sacramento Kings",
-  "The Sacramento Bee",
-  "https://www.sacbee.com/sports/nba/sacramento-kings/"
- ],
- "SAS": [
-  "San Antonio Spurs",
-  "San Antonio Express-News",
-  "https://www.expressnews.com/sports/spurs/"
- ],
- "TOR": [
-  "Toronto Raptors",
-  "Sportsnet",
-  "https://www.sportsnet.ca/nba/teams/toronto-raptors/"
- ],
- "UTA": [
-  "Utah Jazz",
-  "The Salt Lake Tribune",
-  "https://www.sltrib.com/sports/jazz/"
- ],
- "WAS": [
-  "Washington Wizards",
-  "The Washington Post",
-  "https://www.washingtonpost.com/sports/wizards/"
- ]
+/* Fulbolito · medios locales por pais. No lo usa la pagina; es la referencia para la actualizacion diaria.
+   Regla: 1) RSS del medio, 2) portada del mismo medio, 3) el medio alternativo que figura abajo.
+
+   BLOQUEADOS (no se dejan leer automaticamente, ni web ni RSS). USAR SIEMPRE EL ALTERNATIVO:
+   - BBC (Inglaterra, Escocia, Gales, Irlanda del Norte) -> The Guardian: https://www.theguardian.com/uk/rss
+   - Marca (Espana) -> AS: https://as.com/rss/  |  Mundo Deportivo: https://www.mundodeportivo.com/rss/home.xml
+   - Aktuality (Eslovaquia) -> Pravda: https://www.pravda.sk/rss/xml/  |  SME: https://sme.sk
+   - Sportal.bg (Bulgaria): carga pero no trae notas de partido -> Topsport.bg: https://topsport.bg  |  Gong.bg: https://gong.bg
+   - Mozzart Sport (Serbia): la portada falla, pero su RSS de futbol SI funciona:
+     https://www.mozzartsport.com/rss/1.xml  (indice: https://www.mozzartsport.com/rss)
+
+   MEDIOS QUE YA FUNCIONARON: Voetbal International (NL), SNportal (SI), Moldfootball (MD), L'essentiel (LU),
+   Vaterland (LI), A Bola (PT), TV4 (SE), Tiroler Tageszeitung (AT), Flashscore Rumania (RO),
+   The Irish News (IE/NIR), Express & Star (WAL).
+
+   SUDAMERICA (usados y funcionando): Argentina: La Capital, El Grafico, Los Andes, A24, Noticias Argentinas.
+   Chile: Al Aire Libre, Cooperativa, El Rancagueino, BioBioChile, Redgol, La Cuarta, Emol.
+   Colombia: Futbolred, La Patria. Peru: RPP, Libero, Depor, Infobae Peru, El Comercio.
+   Brasil: VAVEL, CNN Brasil, Lance!, ABC do ABC. */
+const FUENTES={
+ "Albania":"https://www.panorama.com.al/sport/",
+ "Alemania":"https://www.kicker.de",
+ "Andorra":"https://www.diariandorra.ad",
+ "Armenia":"https://armsport.am",
+ "Austria":"https://www.laola1.at",
+ "Azerbaiyan":"https://www.azerisport.com",
+ "Belgica":"https://www.dhnet.be/sports/football/",
+ "Bielorrusia":"https://pressball.by",
+ "Bosnia y Herzegovina":"https://sportsport.ba",
+ "Bulgaria":"https://topsport.bg",
+ "Chipre":"https://www.kerkida.net",
+ "Croacia":"https://sportske.jutarnji.hr",
+ "Dinamarca":"https://sport.tv2.dk/fodbold",
+ "Escocia":"https://www.theguardian.com/uk/rss",
+ "Eslovaquia":"https://www.pravda.sk/rss/xml/",
+ "Eslovenia":"https://snportal.si",
+ "Espana":"https://as.com/rss/",
+ "Estonia":"https://soccernet.ee",
+ "Finlandia":"https://www.iltalehti.fi/rss/lajit/urheilu.xml",
+ "Francia":"https://www.lequipe.fr",
+ "Gales":"https://www.theguardian.com/uk/rss",
+ "Georgia":"https://crystalsport.ge",
+ "Gibraltar":"https://www.chronicle.gi",
+ "Grecia":"https://www.gazzetta.gr/football",
+ "Hungria":"https://www.nemzetisport.hu",
+ "Inglaterra":"https://www.theguardian.com/uk/rss",
+ "Irlanda":"https://www.the42.ie/soccer",
+ "Irlanda del Norte":"https://www.theguardian.com/uk/rss",
+ "Islandia":"https://www.mbl.is/feeds/",
+ "Islas Feroe":"https://www.dimma.fo",
+ "Israel":"https://www.one.co.il",
+ "Italia":"https://www.gazzetta.it",
+ "Kazajistan":"https://sports.kz/",
+ "Kosovo":"https://www.gazetaexpress.com",
+ "Letonia":"https://sportacentrs.com/futbols",
+ "Liechtenstein":"https://www.vaterland.li/sport",
+ "Lituania":"https://www.lrytas.lt/sportas/futbolas",
+ "Luxemburgo":"https://www.lessentiel.lu/fr/sports/football",
+ "Macedonia del Norte":"https://gol.mk",
+ "Malta":"https://www.maltatoday.com.mt",
+ "Moldavia":"https://moldfootball.com",
+ "Montenegro":"https://www.vijesti.me/sport/fudbal",
+ "Noruega":"https://www.vg.no/sport/fotball",
+ "Paises Bajos":"https://www.vi.nl",
+ "Polonia":"https://sport.onet.pl/pilka-nozna",
+ "Portugal":"https://www.abola.pt",
+ "Republica Checa":"https://isport.blesk.cz/fotbal",
+ "Rumania":"https://www.gsp.ro",
+ "San Marino":"https://www.sanmarinortv.sm/sport/calcio",
+ "Serbia":"https://www.mozzartsport.com/rss/1.xml",
+ "Suecia":"https://www.fotbollskanalen.se",
+ "Suiza":"https://www.srf.ch/sport/fussball",
+ "Turquia":"https://www.fanatik.com.tr",
+ "Ucrania":"https://ua.tribuna.com/football/"
 };
-/* Fuentes de datos: Basketball-Reference, NBA Stats, Cleaning The Glass, PBP Stats, BBall-Index, Dunks and Threes, Crafted NBA, StatMuse, NBA Stuffer, Hashtag Basketball.
-   Calendario y lesiones: CBS Sports / Covers / ESPN (ESPN bloquea la lectura del calendario). */
+/* Segunda opcion donde el principal ya fallo o donde conviene tener recambio. */
+const FUENTES_ALT={
+ "Bulgaria":"https://gong.bg",
+ "Escocia":"https://www.theguardian.com/football/scottish-premiership",
+ "Eslovaquia":"https://sme.sk",
+ "Espana":"https://www.mundodeportivo.com/rss/home.xml",
+ "Serbia":"https://www.b92.net"
+};
