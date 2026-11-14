@@ -60,7 +60,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--sky);outline-offset
 .daynav .date{font-family:var(--f-display);font-size:17px;font-weight:600;text-transform:uppercase}
 .daynav button{background:var(--sky);color:#fff;border:0;border-radius:3px;padding:5px 10px;font-family:var(--f-display);font-size:15px;font-weight:700;text-transform:uppercase}
 .bill{width:100%;background:rgba(6,20,40,.55);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:8px 12px}
-.bill b{display:block;text-align:right;font-family:var(--f-display);font-style:italic;font-size:14px;font-weight:600;opacity:.85}
+.bill>b{display:block;text-align:right;font-family:var(--f-display);font-style:italic;font-size:14px;font-weight:600;opacity:.85}
 .bill a{display:flex;justify-content:space-between;gap:10px;color:var(--head-ink);text-decoration:none;font-family:var(--f-display);font-size:16px;font-weight:600;line-height:1.35}
 .bill a::before{content:"\00bb";color:var(--sky);margin-right:4px}
 .bill a span:first-child{flex:1;min-width:0;overflow-wrap:anywhere}
@@ -73,7 +73,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--sky);outline-offset
 .cat[aria-pressed="true"]{background:#fff;color:var(--sky-2);text-shadow:none}
 .wrap{max-width:760px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-direction:column;gap:20px}
 .flag{font-family:var(--f-flag);font-size:1.25em;line-height:1}
-.cc,.crest{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.02em;border:1px solid rgba(0,0,0,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.cc,.crest{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.02em;border:1px solid rgba(0,0,0,.28);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
 .cc{min-width:30px;height:20px;padding:0 4px;border-radius:3px}
 .crest{min-width:24px;height:24px;padding:0 4px;border-radius:50%}
 .escimg{flex:0 0 auto;width:24px;height:24px;object-fit:contain;display:block}
@@ -100,14 +100,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--sky);outline-offset
 .lvl{display:flex;flex-direction:column;gap:8px}
 .lvl p{margin:0;max-width:65ch}
 .lvl ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;max-width:65ch}
-.num{font-weight:700;font-variant-numeric:tabular-nums}
+.num{display:inline;font-weight:700;font-variant-numeric:tabular-nums}
 .press{display:flex;flex-direction:column;gap:6px}
 .press a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:8px 10px;text-decoration:none;color:var(--ink)}
 .press a b{color:var(--accent);font-weight:600}
 .press a.sec{border-style:dashed;color:var(--muted)}
 .more{align-self:flex-start;background:none;border:1px solid var(--accent);color:var(--accent);border-radius:4px;padding:8px 12px;font-family:var(--f-display);font-size:16px;font-weight:600;text-transform:uppercase}
 .dato{border-left:4px solid var(--sky);background:var(--paper);padding:10px 12px;border-radius:0 4px 4px 0}
-.dato b{display:block;font-family:var(--f-display);font-size:19px;font-weight:700;line-height:1.2}
+.dato .dt{display:block;font-family:var(--f-display);font-size:19px;font-weight:700;line-height:1.2}
 .dato span{color:var(--muted);font-size:13.5px}
 .tip{border:1px solid var(--line);border-radius:4px;padding:10px;display:grid;grid-template-columns:1fr auto;gap:4px 10px;background:var(--paper)}
 .tip .k{font-family:var(--f-display);font-size:13px;text-transform:uppercase;color:var(--muted);font-weight:600;grid-column:1/-1}
@@ -178,8 +178,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--sky);outline-offset
 const SITES=[["Sofascore","https://www.sofascore.com/es-la"],["FotMob","https://www.fotmob.com/es"],["FBref","https://fbref.com/en/"],["WhoScored","https://es.whoscored.com/"],["FootyStats","https://footystats.org/"],["Understat","https://understat.com/"],["BeSoccer","https://es.besoccer.com/"],["Transfermarkt","https://www.transfermarkt.es/"],["Ceroacero","https://www.ceroacero.es/"],["Football-Data","https://www.football-data.co.uk/"],["Balonario (modelo)","https://balonario.com/pronosticos/"]];
 /* Colores de respaldo por pais, para cuando el telefono no dibuja la bandera emoji. */
 const COLP={arg:["#74acdf","#0b1c33"],uru:["#4aa5dd","#0b1c33"],chi:["#d52b1e","#ffffff"],col:["#fcd116","#1a1a1a"],per:["#d91023","#ffffff"],bol:["#007a33","#ffffff"],bra:["#009739","#fedd00"],par:["#d52b1e","#ffffff"],ecu:["#ffdd00","#0b1c33"],ven:["#cf142b","#ffffff"],
-ned:["#f36c21","#ffffff"],gre:["#0d5eaf","#ffffff"],srb:["#c6363c","#ffffff"],ger:["#1a1a1a","#ffffff"],sco:["#0b1f4b","#ffffff"],mkd:["#d20000","#ffe600"],svn:["#0057b8","#ffffff"],sui:["#d52b1e","#ffffff"],svk:["#0b4ea2","#ffffff"],fro:["#0065bd","#ffffff"],bul:["#00966e","#ffffff"],isl:["#02529c","#ffffff"],lux:["#00a1de","#ffffff"],est:["#0072ce","#ffffff"],and:["#10069f","#fed100"],gib:["#da291c","#ffffff"],lie:["#002b7f","#ffffff"],aze:["#00b5e2","#0b1c33"],mda:["#0046ae","#ffffff"],kaz:["#00afca","#ffffff"],kos:["#244aa5","#ffffff"],isr:["#0038b8","#ffffff"],nor:["#ba0c2f","#ffffff"],wal:["#c8102e","#ffffff"],geo:["#da291c","#ffffff"],hun:["#436f4d","#ffffff"],por:["#006600","#ffffff"],den:["#c8102e","#ffffff"],ukr:["#0057b8","#ffd700"],aut:["#ed2939","#ffffff"],irl:["#169b62","#ffffff"],rou:["#002b7f","#fcd116"],pol:["#dc143c","#ffffff"],swe:["#006aa7","#fecc02"],bih:["#002395","#ffffff"],nir:["#00843d","#ffffff"],jpn:["#bc002d","#ffffff"],esp:["#c60b1e","#fed100"],eng:["#ffffff","#c8102e"],ita:["#0066cc","#ffffff"],fra:["#0055a4","#ffffff"],bel:["#c8102e","#fdda24"],cro:["#ff0000","#ffffff"],tur:["#e30a17","#ffffff"],mex:["#006847","#ffffff"],usa:["#3c3b6e","#ffffff"],can:["#d52b1e","#ffffff"]};
+ned:["#f36c21","#ffffff"],gre:["#0d5eaf","#ffffff"],srb:["#c6363c","#ffffff"],ger:["#1a1a1a","#ffffff"],sco:["#0b1f4b","#ffffff"],mkd:["#d20000","#ffe600"],svn:["#0057b8","#ffffff"],sui:["#d52b1e","#ffffff"],svk:["#0b4ea2","#ffffff"],fro:["#0065bd","#ffffff"],bul:["#00966e","#ffffff"],isl:["#02529c","#ffffff"],lux:["#00a1de","#ffffff"],est:["#0072ce","#ffffff"],and:["#10069f","#fed100"],gib:["#da291c","#ffffff"],lie:["#002b7f","#ffffff"],aze:["#00b5e2","#0b1c33"],mda:["#0046ae","#ffffff"],kaz:["#00afca","#ffffff"],kos:["#244aa5","#ffffff"],isr:["#0038b8","#ffffff"],nor:["#ba0c2f","#ffffff"],wal:["#c8102e","#ffffff"],geo:["#da291c","#ffffff"],hun:["#436f4d","#ffffff"],por:["#006600","#ffffff"],den:["#c8102e","#ffffff"],ukr:["#0057b8","#ffd700"],aut:["#ed2939","#ffffff"],irl:["#169b62","#ffffff"],rou:["#002b7f","#fcd116"],pol:["#dc143c","#ffffff"],swe:["#006aa7","#fecc02"],bih:["#002395","#ffffff"],nir:["#00843d","#ffffff"],jpn:["#bc002d","#ffffff"],esp:["#c60b1e","#fed100"],eng:["#f2f6fa","#c8102e"],ita:["#0066cc","#ffffff"],fra:["#0055a4","#ffffff"],bel:["#c8102e","#fdda24"],cro:["#ff0000","#ffffff"],tur:["#e30a17","#ffffff"],mex:["#006847","#ffffff"],usa:["#3c3b6e","#ffffff"],can:["#d52b1e","#ffffff"]};
 const NEU=["#2a3b4d","#ffffff"];
+/* Banderas de subdivision (Reino Unido): casi ningun sistema las dibuja y salen negras. Siempre rectangulo. */
+const SINBANDERA=new Set(["sco","wal","nir","eng"]);
 let day="hoy", cat="all"; const open={}, openAl={};
 const start=new Date(new Date().getFullYear(),0,0);
 let pd=Math.floor((Date.now()-start)/864e5)%PD.length;
@@ -207,7 +209,7 @@ function escFail(img){try{img.outerHTML=img.getAttribute("data-fb")||"";}catch(e
 function mark(t){
   const k=t[1];
   if(typeof k==="string"&&k!=="club"){
-    if(FLAGOK&&F[k]) return '<span class="flag">'+F[k]+'</span>';
+    if(FLAGOK&&F[k]&&!SINBANDERA.has(k)) return '<span class="flag">'+F[k]+'</span>';
     const c=COLP[k]||NEU;
     return '<b class="cc" style="background:'+esc(c[0])+';color:'+esc(c[1])+'">'+esc(k.toUpperCase())+'</b>';
   }
@@ -274,7 +276,7 @@ function detailHTML(m){
     if(m.h2h) s+='<div class="lvl"><h3>Mano a mano</h3>'+ul(m.h2h)+'</div>';
     if(m.racha) s+='<div class="lvl"><h3>Racha</h3>'+ul(m.racha)+'</div>';
     if(m.bajas) s+='<div class="lvl"><h3>Bajas y novedades</h3>'+ul(m.bajas)+'</div>';
-    if(m.dato) s+='<div class="lvl"><h3>Dato certero</h3><div class="dato"><b>'+nb(m.dato[0])+'</b><span>'+nb(m.dato[1])+'</span></div></div>';
+    if(m.dato) s+='<div class="lvl"><h3>Dato certero</h3><div class="dato"><b class="dt">'+nb(m.dato[0])+'</b><span>'+nb(m.dato[1])+'</span></div></div>';
   }
   const ready=m.tips&&m.tips.length&&(!has2||lv>=2);
   if(ready&&lv<3) s+='<button class="more" type="button" data-more="'+m.id+'">Ver hot tips</button>';
