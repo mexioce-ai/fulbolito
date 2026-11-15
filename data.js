@@ -17,10 +17,10 @@
    {col, dest:[apellidos]}             -> solo jugadores destacados
    Nunca inventes dorsales: si no hay dorsal confirmado va null. */
 const FECHA={hoy:"Dom 15 nov",man:"Lun 16 nov"};
-const ACTUALIZADO="domingo 15 de noviembre a las 19:30 de Chile";
+const ACTUALIZADO="domingo 15 de noviembre a las 20:55 de Chile";
 const F={col:"🇨🇴",chi:"🇨🇱",arg:"🇦🇷",uru:"🇺🇾",per:"🇵🇪",bol:"🇧🇴",ned:"🇳🇱",gre:"🇬🇷",srb:"🇷🇸",ger:"🇩🇪",sco:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",mkd:"🇲🇰",svn:"🇸🇮",sui:"🇨🇭",svk:"🇸🇰",fro:"🇫🇴",bul:"🇧🇬",isl:"🇮🇸",lux:"🇱🇺",est:"🇪🇪",and:"🇦🇩",gib:"🇬🇮",lie:"🇱🇮",aze:"🇦🇿",mda:"🇲🇩",kaz:"🇰🇿",jpn:"🇯🇵",bra:"🇧🇷",kos:"🇽🇰",isr:"🇮🇱",nor:"🇳🇴",wal:"🏴󠁧󠁢󠁷󠁬󠁳󠁿",geo:"🇬🇪",hun:"🇭🇺",por:"🇵🇹",den:"🇩🇰",ukr:"🇺🇦",aut:"🇦🇹",irl:"🇮🇪",rou:"🇷🇴",pol:"🇵🇱",swe:"🇸🇪",bih:"🇧🇦",nir:"🏴󠁧󠁢󠁮󠁩󠁲󠁿",bel:"🇧🇪",ita:"🇮🇹",fra:"🇫🇷",tur:"🇹🇷",esp:"🇪🇸",eng:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",cro:"🇭🇷",cze:"🇨🇿",cyp:"🇨🇾",mne:"🇲🇪",lva:"🇱🇻",arm:"🇦🇲",blr:"🇧🇾",alb:"🇦🇱",fin:"🇫🇮",smr:"🇸🇲"};
-const CATS=[["all","Todos"],["uefa","UEFA"],["pe","Perú"]];
-const CATNAME={uefa:"Selecciones · UEFA",pe:"Clubes · Perú"};
+const CATS=[["all","Todos"],["uefa","UEFA"],["clb","Primera B"],["pe","Perú"]];
+const CATNAME={uefa:"Selecciones · UEFA",clb:"Clubes · Chile · Primera B",pe:"Clubes · Perú"};
 const UEFA=["Calendario y resultados de la Nations League 2026-27","UEFA.com","https://www.uefa.com/uefanationsleague/news/02a2-1fea1edbc9a9-78c6728d4928-1000--uefa-nations-league-2026-27-partidos-calendario-y-result/"];
 const sec=(medio,url)=>["Sección de fútbol",medio,url,1];
 const C={
@@ -28,7 +28,11 @@ const C={
  jp2:{sig:"JP2",col:["#1d6b3a","#ffffff"]}, gar:{sig:"GAR",col:["#c8102e","#ffffff"]},
  utc:{sig:"UTC",col:["#c8102e","#ffffff"]}, chk:{sig:"CHK",col:["#2e6bc6","#ffffff"]},
  cus:{sig:"CUS",col:["#c8102e","#111111"]}, adt:{sig:"ADT",col:["#f5c400","#111111"]},
- moq:{sig:"MOQ",col:["#c8102e","#ffffff"]}, gra:{sig:"GRA",col:["#f5c400","#c8102e"]}
+ moq:{sig:"MOQ",col:["#c8102e","#ffffff"]}, gra:{sig:"GRA",col:["#f5c400","#c8102e"]},
+ wan:{sig:"SW",col:["#0b7a3b","#ffffff"]}, cop:{sig:"COP"}, mag:{sig:"MAG"}, ant:{sig:"ANF",col:["#6fb7e8","#0b1c33"]},
+ sma:{sig:"SMA",col:["#1f6fc9","#ffffff"]}, slq:{sig:"SLQ",col:["#f5c400","#111111"]}, cob:{sig:"COB",col:["#f26522","#ffffff"]},
+ pmo:{sig:"PMO",col:["#1d5fb8","#ffffff"]}, usf:{sig:"USF"}, ues:{sig:"UE",col:["#c8102e","#ffffff"]}, scz:{sig:"SCZ"},
+ ran:{sig:"RAN",col:["#c8102e","#111111"]}, rec:{sig:"REC"}, iqq:{sig:"IQQ",col:["#4fb3e8","#0b1c33"]}
 };
 
 const M=[
@@ -89,6 +93,35 @@ const M=[
  prensa:[UEFA,sec("Iltalehti (Finlandia)","https://www.iltalehti.fi/rss/lajit/urheilu.xml")],
  dato:["Sin estadística previa verificada","No encontré historial ni forma reciente en las fuentes revisadas."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
 
+{id:"scz-ran",day:"hoy",t:"18:00",cat:"clb",comp:"Primera B · fecha 30 (última de la fase regular)",star:1,h:["Deportes Santa Cruz",C.scz],a:["Rangers",C.ran],p:null,sc:null,
+ juego:"Duelo por no descender, en el Joaquín Muñoz de Santa Cruz. Antes de la fecha, Rangers tenía 21 puntos, San Felipe 23 y Santa Cruz 24. Si Rangers gana y San Felipe también, Rangers y Santa Cruz igualan en 24 y juegan un partido de definición. Revisa el resultado final: no lo pude confirmar.",
+ prensa:[["Ascensos, descensos y partidos de definición este domingo","T13","https://www.t13.cl/noticia/deportes13/ascensos-descensos-posibles-partidos-definicion-resultados-definen-primera-b-es-15-11-2026"],sec("Al Aire Libre (Primera B)","https://www.alairelibre.cl/futbol/primera-b/")],
+ h2h:["Esta temporada: Rangers 0-1 Santa Cruz (6 de junio).","Solo revisé los cruces de 2026."],
+ racha:["Santa Cruz: 24 puntos, 4 triunfos, 12 empates y 13 derrotas, con diferencia de gol de -14. Últimos cinco: E E P P E.","Rangers: 21 puntos, 5 triunfos, 6 empates y 18 derrotas, con -19. Últimos cinco: P P G P P."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Santa Cruz y Rangers se juegan la categoría","Santa Cruz solo ganó 4 de 29 partidos; Rangers, 5."],tips:[],nd:"probabilidades del modelo, córners ni tarjetas"},
+
+{id:"usf-ues",day:"hoy",t:"18:00",cat:"clb",comp:"Primera B · fecha 30 (última de la fase regular)",star:1,h:["Unión San Felipe",C.usf],a:["Unión Española",C.ues],p:null,sc:null,
+ juego:"Se juega en el Municipal de San Felipe. San Felipe llegaba con 23 puntos y, si pierde y Rangers gana, desciende. Unión Española llegaba con 39. Revisa el resultado final: no lo pude confirmar.",
+ prensa:[["Ascensos, descensos y partidos de definición este domingo","T13","https://www.t13.cl/noticia/deportes13/ascensos-descensos-posibles-partidos-definicion-resultados-definen-primera-b-es-15-11-2026"],sec("Al Aire Libre (Primera B)","https://www.alairelibre.cl/futbol/primera-b/")],
+ racha:["San Felipe: 23 puntos, 5 triunfos, 8 empates y 16 derrotas, con -34 de diferencia. Últimos cinco: P E P P P.","Unión Española: 39 puntos, con -3 de diferencia. Últimos cinco: P G P P E."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["San Felipe tiene el peor gol diferencia de la tabla: -34","Marcó 19 goles en 29 partidos y recibió 53."],tips:[["Resultado","Unión Española o empate","media","San Felipe lleva 16 derrotas en 29 partidos y 53 goles en contra."]],nd:"probabilidades del modelo, córners ni tarjetas"},
+
+{id:"mag-ant",day:"hoy",t:"18:00",cat:"clb",comp:"Primera B · fecha 30 (última de la fase regular)",h:["Magallanes",C.mag],a:["Deportes Antofagasta",C.ant],p:null,sc:null,
+ juego:"Cierre de la fase regular para dos equipos que pelean la liguilla de ascenso. Antofagasta llegaba con 48 puntos y Magallanes con 46. El horario sale de la programación simultánea de la fecha. Revisa el resultado final: no lo pude confirmar.",
+ prensa:[sec("Al Aire Libre (Primera B)","https://www.alairelibre.cl/futbol/primera-b/")],
+ racha:["Antofagasta: 48 puntos, 51 goles a favor y 26 en contra. Últimos cinco: G E G G P.","Magallanes: 46 puntos, 45 goles a favor y 44 en contra. Últimos cinco: P P G G G."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Antofagasta tiene +25 de diferencia de gol, la mejor de estos dos","Magallanes tiene +1."],tips:[],nd:"historial, probabilidades del modelo, córners ni tarjetas"},
+
+{id:"rec-iqq",day:"hoy",t:"20:30",cat:"clb",comp:"Primera B · fecha 30 (última de la fase regular)",h:["Deportes Recoleta",C.rec],a:["Deportes Iquique",C.iqq],p:null,sc:null,
+ juego:"Se juega en el Municipal de La Pintana. Recoleta llegaba con 42 puntos e Iquique con 38.",
+ prensa:[["Ascensos, descensos y partidos de definición este domingo","T13","https://www.t13.cl/noticia/deportes13/ascensos-descensos-posibles-partidos-definicion-resultados-definen-primera-b-es-15-11-2026"]],
+ racha:["Recoleta: 42 puntos, -2 de diferencia. Últimos cinco: E P P G E.","Iquique: 38 puntos, +9 de diferencia. Últimos cinco: G E G G G."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Iquique viene de 4 triunfos en sus últimos 5","Recoleta, con 1 triunfo en sus últimos 5."],tips:[],nd:"historial, probabilidades del modelo, córners ni tarjetas"},
+
 {id:"com-spb",day:"hoy",t:"15:00",cat:"pe",comp:"Liga 1 · Clausura, fecha 17",h:["Comerciantes Unidos",C.com],a:["Sport Boys",C.spb],p:null,sc:null,
  juego:"Abre la última fecha del Torneo Clausura, en el Juan Maldonado Gamarra de Cutervo (13:00 en Perú). Esta fecha se reparte hasta el domingo 22, cuando se define el título.",
  prensa:[["Días y horarios confirmados para la última fecha del Clausura","RPP","https://rpp.pe/futbol/descentralizado/torneo-clausura-2026-fecha-17-con-universitario-alianza-lima-cristal-huancayo-programacion-de-partidos-y-horarios-de-la-ultima-fecha-de-la-liga-1-noticia-1716997"]],
@@ -100,6 +133,21 @@ const M=[
  dato:["Juan Pablo II era 17º en la tabla acumulada con 16 puntos","Dato de la corrida anterior; no se verificó la tabla de hoy."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
 
 /* ================= MANANA: lunes 16 ================= */
+{id:"fro-mda",day:"man",t:"12:00",cat:"uefa",comp:"Nations League · Liga C, grupo 3, fecha 6",h:["Islas Feroe","fro"],a:["Moldavia","mda"],p:null,sc:null,
+ juego:"Última fecha del grupo C3 de la Liga C. Hora de Chile a partir de las 16:00 de la UEFA (hora central europea).",
+ prensa:[UEFA],
+ racha:["Moldavia: 0-4 con Eslovaquia y 2-1 a Kazajistán, entre los partidos que alcancé a verificar."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Islas Feroe empató 1-1 con Kazajistán en la fecha 1","No revisé el resto de sus resultados."],tips:[],nd:"historial, probabilidades del modelo, córners ni tarjetas"},
+
+{id:"kaz-svk",day:"man",t:"12:00",cat:"uefa",comp:"Nations League · Liga C, grupo 3, fecha 6",h:["Kazajistán","kaz"],a:["Eslovaquia","svk"],p:null,sc:null,
+ juego:"Última fecha del grupo C3 de la Liga C. Hora de Chile a partir de las 16:00 de la UEFA (hora central europea).",
+ prensa:[UEFA],
+ h2h:["Ida, 29 de septiembre de 2026: Eslovaquia 2-1 Kazajistán."],
+ racha:["Eslovaquia: 2-1 a Kazajistán y 4-0 a Moldavia, entre los partidos que alcancé a verificar.","Kazajistán: 1-1 con Islas Feroe, derrota 1-2 con Eslovaquia y derrota 1-2 con Moldavia."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Eslovaquia ganó los dos partidos que verifiqué, con 6 goles a favor","Kazajistán perdió sus dos últimos partidos verificados."],tips:[["Resultado","Eslovaquia o empate","media","Ganó los dos partidos verificados y ya le había ganado a Kazajistán 2-1 en la ida."]],nd:"probabilidades del modelo, córners ni tarjetas"},
+
 {id:"utc-chk",day:"man",t:"15:00",cat:"pe",comp:"Liga 1 · Clausura, fecha 17",star:1,h:["UTC",C.utc],a:["Los Chankas",C.chk],p:null,sc:null,
  juego:"Se juega en el Héroes de San Ramón de Cajamarca (13:00 en Perú). UTC pelea la permanencia según la corrida anterior.",
  prensa:[["Programación de la última fecha del Clausura","RPP","https://rpp.pe/futbol/descentralizado/torneo-clausura-2026-fecha-17-con-universitario-alianza-lima-cristal-huancayo-programacion-de-partidos-y-horarios-de-la-ultima-fecha-de-la-liga-1-noticia-1716997"]],
@@ -116,8 +164,9 @@ const M=[
  dato:["Moquegua y Atlético Grau pelean la permanencia","Dato de la corrida anterior; no se verificó la tabla actual."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"}
 ];
 
-const SUB={hoy:"Hoy: cierra la Nations League con España-Inglaterra y Bélgica-Italia.",man:"Mañana: tres partidos de la última fecha del Clausura peruano."};
+const SUB={hoy:"Hoy: cierra la Nations League (Liga A) y se juega la última fecha de la Primera B de Chile.",man:"Mañana: dos de la Liga C de la Nations League y tres del Clausura peruano."};
 const PD=[
+ ["Primera B de Chile: cómo está la definición",["Cobreloa y San Luis llegaron empatados en la punta con 57 puntos, así que el campeón y el primer ascenso se definen en un solo partido en cancha neutral. No encontré la fecha confirmada.","La liguilla por el segundo ascenso todavía tiene cruces por confirmar. Revisa la programación oficial de la ANFP.","En el descenso, antes de la última fecha: Rangers 21 puntos, San Felipe 23 y Santa Cruz 24. Si ganan Rangers y San Felipe, Rangers y Santa Cruz juegan un partido de definición.","No pude confirmar los resultados finales de hoy: míralos en la ANFP o en el diario antes de dar algo por cerrado."]],
  ["Sudamérica después del Mundial",["Messi se retiró de la selección el 6 de octubre de 2026, ante Benín, tras 21 años. Scaloni renovó hasta 2030.","Argentina fue subcampeona del Mundial 2026: perdió la final 1-0 con España.","Uruguay cayó en fase de grupos. Se fue Bielsa y Diego Forlán dirige como interino.","Colombia quedó fuera en octavos, por penales ante Suiza.","A Chile lo dirige Nicolás Córdova y a Perú el brasileño Mano Menezes."]],
  ["Europa: quién manda en las selecciones",["Zidane dirige a Francia: debutó el 25 de septiembre con 1-0 sobre Turquía.","España lidera su grupo de la Nations League con 5 triunfos en 5; Inglaterra, con 4 triunfos y 1 derrota, suma 12 puntos.","Italia le ganó 3-1 a Francia el 12 de noviembre y llegó con 10 puntos al cierre del grupo A1.","Turquía perdió sus 5 partidos del grupo, con 3 goles a favor y 13 en contra.","Klopp dirige a Alemania, Xavi a Países Bajos y Tuchel a Inglaterra.","Cristiano Ronaldo dejó la selección de Portugal, que ahora dirige Jorge Jesus."]],
  ["Clubes de Sudamérica: quién manda",["La final de la Copa Libertadores 2026 es Estudiantes vs Palmeiras, el sábado 28 de noviembre a las 17:00 en el Centenario de Montevideo. Reedita la final de 1968, que también se definió ahí.","Estudiantes eliminó a Flamengo por penales en el Maracaná, con Fernando Muslera en el arco. Palmeiras, de Abel Ferreira, dejó fuera a Fluminense también por penales.","Boca Juniors, dirigido por Rodolfo Arruabarrena, ganó la Tabla Anual argentina y juega la final de la Copa Sudamericana ante Atlético Mineiro el 21 de noviembre.","Carlo Ancelotti dirige a Brasil: 12 triunfos en 20 partidos, pero cayó en octavos del Mundial ante la Noruega de Haaland.","Chile estrena torneo: la Copa de la Liga, cuyo campeón va a la Libertadores 2027. La definen Coquimbo Unido y O'Higgins.","En Chile, Universidad de Chile y Universidad Católica pelean el cupo Chile 2 a la Libertadores en las dos últimas fechas."]]
