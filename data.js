@@ -27,4 +27,101 @@ const C={
  com:{sig:"COM",col:["#1d3a8f","#ffffff"]}, spb:{sig:"SB",col:["#e8679a","#ffffff"]},
  jp2:{sig:"JP2",col:["#1d6b3a","#ffffff"]}, gar:{sig:"GAR",col:["#c8102e","#ffffff"]},
  utc:{sig:"UTC",col:["#c8102e","#ffffff"]}, chk:{sig:"CHK",col:["#2e6bc6","#ffffff"]},
- cus:{sig:"CUS",col:["#c8102e","#111111"]},
+ cus:{sig:"CUS",col:["#c8102e","#111111"]}, adt:{sig:"ADT",col:["#f5c400","#111111"]},
+ moq:{sig:"MOQ",col:["#c8102e","#ffffff"]}, gra:{sig:"GRA",col:["#f5c400","#c8102e"]}
+};
+
+const M=[
+/* ================= HOY: domingo 15 ================= */
+{id:"esp-eng",day:"hoy",t:"16:45",cat:"uefa",comp:"Nations League · Liga A, grupo 3, fecha 6",star:1,h:["España","esp"],a:["Inglaterra","eng"],p:[60,21,19],sc:null,
+ juego:"Cierre de la Liga A en el Metropolitano de Madrid, con arbitraje de Clément Turpin. España lidera con 15 puntos de 15 e Inglaterra es segunda con 12. Se ve por TVE.",
+ prensa:[["Previa y datos del España-Inglaterra","ESPN Argentina","https://www.espn.com.ar/futbol/partido/_/juegoId/401861175/engeland-spanje"],UEFA,sec("AS (España)","https://as.com/rss/")],
+ h2h:["Ida, 26 de septiembre de 2026: Inglaterra 2-3 España. Es el único cruce que encontré en la página de Fútbol Total, que lo rotula como derrota en un lugar pero con el marcador a favor de España. No revisé otras competencias, por lo que puede haber más antecedentes."],
+ racha:["España: 5 triunfos en 5, con 14 goles a favor y 5 en contra. El 12 de noviembre le ganó 2-0 a Chequia.","Inglaterra: 4 triunfos y 1 derrota, con 16 goles a favor y 4 en contra. El 12 de noviembre le ganó 2-1 a Croacia."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Inglaterra marca 3,2 goles por partido y España 2,8","Inglaterra lleva 16 goles en 5 partidos del grupo; España, 14. El único cruce del año terminó 3-2."],
+ tips:[["Resultado","Gana España","media","Cinco triunfos en cinco y 60% en el modelo de Fútbol Total, que da 21% al empate y 19% a Inglaterra."],["Goles","Más de 2,5","media","Promedios de 3,2 y 2,8 goles por partido de los dos equipos en la Nations League, y 5 goles en la ida."]],nd:"córners ni tarjetas"},
+
+{id:"bel-ita",day:"hoy",t:"16:45",cat:"uefa",comp:"Nations League · Liga A, grupo 1, fecha 6",star:1,h:["Bélgica","bel"],a:["Italia","ita"],p:null,sc:null,
+ juego:"Cierre del grupo A1, en el Rey Balduino de Bruselas. Antes de esta fecha Italia y Francia tenían 10 puntos y Bélgica 9, así que los tres siguen con opciones. Arbitra el noruego Espen Eskås.",
+ prensa:[["Previa Bélgica-Italia: alineaciones confirmadas","World Soccer Talk","https://worldsoccertalk.com/news/italy-vs-belgium-confirmed-lineups-for-2026-27-uefa-nations-league-group-a1-clash/"],UEFA,sec("DH Les Sports+ (Bélgica)","https://www.dhnet.be/sports/football/")],
+ h2h:["Ida, 25 de septiembre de 2026: Italia 0-2 Bélgica.","Solo revisé Fútbol Total y las previas de la temporada; no encontré el historial completo en otras competencias."],
+ racha:["Bélgica: victoria 2-1 con Turquía, derrota 1-4 con Francia, 3-0 a Turquía, derrota 0-1 con Francia y 2-0 a Italia.","Italia: 3-1 a Francia el 12 de noviembre, 3-1 a Turquía, 1-1 con Francia, 4-1 a Turquía y derrota 0-2 con Bélgica."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Italia marcó 3 o más goles en 4 de sus 5 partidos del grupo","Bélgica ganó 3 de 5, pero las dos derrotas fueron con Francia. Los tres resultados de Italia ante Turquía y Francia en la segunda mitad sumaron 11 goles a favor."],
+ tips:[["Goles","Más de 1,5","alta","Italia pasó de 1,5 goles totales en sus 5 partidos del grupo y Bélgica en 4 de 5."]],nd:"probabilidades del modelo, córners ni tarjetas"},
+
+{id:"fra-tur",day:"hoy",t:"16:45",cat:"uefa",comp:"Nations League · Liga A, grupo 1, fecha 6",star:1,h:["Francia","fra"],a:["Turquía","tur"],p:[80,13,7],sc:null,
+ juego:"Se juega en el Matmut Atlantique de Burdeos. Francia, ahora dirigida por Zidane, llega con 10 puntos y opción de pelear el primer lugar del grupo; Turquía no suma puntos y ya perdió sus cinco partidos.",
+ prensa:[["Nations League: a qué hora y en qué canal ver Francia-Turquía","Sortiraparis","https://www.sortiraparis.com/en/what-to-do-in-paris/sport-wellness/articles/353172-nations-league-what-time-and-which-channel-to-watch-france-vs-turkey-on-november-15"],UEFA,sec("L'Équipe (Francia)","https://www.lequipe.fr")],
+ h2h:["Ida, 25 de septiembre de 2026: Turquía 0-1 Francia, estreno de Zidane en el banco francés.","Solo revisé los cruces de esta temporada."],
+ racha:["Francia: 1-0 a Turquía, 1-0 a Bélgica, 1-1 con Italia, 4-1 a Bélgica y derrota 1-3 con Italia el 12 de noviembre.","Turquía: 5 derrotas en 5, con 3 goles a favor y 13 en contra."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Turquía recibe 2,6 goles por partido","13 goles en contra en 5 partidos y 0 puntos. Anotó en 3 de los 5."],
+ tips:[["Resultado","Gana Francia","alta","Turquía perdió los 5 partidos con 13 goles en contra; el modelo de Fútbol Total da 80% a Francia."],["Goles","Más de 1,5","media","En 4 de los 5 partidos de Turquía hubo 2 goles o más en total."]],nd:"córners ni tarjetas"},
+
+{id:"cro-cze",day:"hoy",t:"16:45",cat:"uefa",comp:"Nations League · Liga A, grupo 3, fecha 6",star:1,h:["Croacia","cro"],a:["Chequia","cze"],p:null,sc:null,
+ juego:"Se juega en la Opus Arena de Osijek. Croacia tiene 3 puntos, producto de su única victoria, y Chequia aún no suma: ambos cierran el grupo A3 sin opciones de pelear arriba.",
+ prensa:[["Previa Croacia-Chequia","TUDN","https://www.tudn.com/futbol/uefa-nations-league/croacia-vs-republica-checa-uefa-nations-league-2026-11-15"],UEFA,sec("Jutarnji sport (Croacia)","https://sportske.jutarnji.hr")],
+ h2h:["Ida, 26 de septiembre de 2026: Croacia 2-1 Chequia, la única victoria croata del grupo.","Solo revisé los cruces de esta temporada."],
+ racha:["Croacia: 1 triunfo y 4 derrotas. El 12 de noviembre perdió 1-2 con Inglaterra.","Chequia: 5 derrotas en 5. El 12 de noviembre cayó 0-2 con España."],
+ bajas:["No encontré información de bajas en las fuentes revisadas."],
+ dato:["Chequia perdió los 5 partidos del grupo","Croacia ganó solo 1, justamente a Chequia por 2-1."],
+ tips:[["Resultado","Croacia o empate","media","Chequia perdió sus 5 partidos y Croacia ganó el único cruce de la temporada."]],nd:"probabilidades del modelo, córners ni tarjetas"},
+
+{id:"cyp-mne",day:"hoy",t:"11:00",cat:"uefa",comp:"Nations League · Liga C, grupo 2, fecha 6",h:["Chipre","cyp"],a:["Montenegro","mne"],p:null,sc:null,
+ juego:"Última fecha del grupo C2 de la Liga C.",
+ prensa:[UEFA,sec("Kerkida (Chipre)","https://www.kerkida.net")],
+ dato:["Sin estadística previa verificada","No encontré historial ni forma reciente en las fuentes revisadas."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
+
+{id:"lva-arm",day:"hoy",t:"11:00",cat:"uefa",comp:"Nations League · Liga C, grupo 2, fecha 6",h:["Letonia","lva"],a:["Armenia","arm"],p:null,sc:null,
+ juego:"Última fecha del grupo C2 de la Liga C.",
+ prensa:[UEFA,sec("Sportacentrs (Letonia)","https://sportacentrs.com/futbols")],
+ dato:["Sin estadística previa verificada","No encontré historial ni forma reciente en las fuentes revisadas."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
+
+{id:"blr-alb",day:"hoy",t:"14:00",cat:"uefa",comp:"Nations League · Liga C, grupo 1, fecha 6",h:["Bielorrusia","blr"],a:["Albania","alb"],p:null,sc:null,
+ juego:"Última fecha del grupo C1 de la Liga C.",
+ prensa:[UEFA,sec("Pressball (Bielorrusia)","https://pressball.by")],
+ dato:["Sin estadística previa verificada","No encontré historial ni forma reciente en las fuentes revisadas."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
+
+{id:"fin-smr",day:"hoy",t:"14:00",cat:"uefa",comp:"Nations League · Liga C, grupo 1, fecha 6",h:["Finlandia","fin"],a:["San Marino","smr"],p:null,sc:null,
+ juego:"Última fecha del grupo C1 de la Liga C.",
+ prensa:[UEFA,sec("Iltalehti (Finlandia)","https://www.iltalehti.fi/rss/lajit/urheilu.xml")],
+ dato:["Sin estadística previa verificada","No encontré historial ni forma reciente en las fuentes revisadas."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
+
+{id:"com-spb",day:"hoy",t:"15:00",cat:"pe",comp:"Liga 1 · Clausura, fecha 17",h:["Comerciantes Unidos",C.com],a:["Sport Boys",C.spb],p:null,sc:null,
+ juego:"Abre la última fecha del Torneo Clausura, en el Juan Maldonado Gamarra de Cutervo (13:00 en Perú). Esta fecha se reparte hasta el domingo 22, cuando se define el título.",
+ prensa:[["Días y horarios confirmados para la última fecha del Clausura","RPP","https://rpp.pe/futbol/descentralizado/torneo-clausura-2026-fecha-17-con-universitario-alianza-lima-cristal-huancayo-programacion-de-partidos-y-horarios-de-la-ultima-fecha-de-la-liga-1-noticia-1716997"]],
+ dato:["El título del Clausura se define el domingo 22","Sporting Cristal vs. Cienciano y Sport Huancayo vs. Universitario juegan a las 3:00 p.m. de Perú."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
+
+{id:"jp2-gar",day:"hoy",t:"17:15",cat:"pe",comp:"Liga 1 · Clausura, fecha 17",h:["Juan Pablo II",C.jp2],a:["Deportivo Garcilaso",C.gar],p:null,sc:null,
+ juego:"Segundo partido del domingo por la fecha 17, en el complejo de Juan Pablo II, en Chongoyape (15:15 en Perú).",
+ prensa:[["Cambios de día y horario en la fecha 17 del Clausura","Bolavip Perú","https://bolavip.com/pe/liga-1/liga-1-confirmo-cambios-de-dia-y-horario-asi-quedo-la-programacion-de-la-fecha-17-del-torneo-clausura-2026"]],
+ dato:["Juan Pablo II era 17º en la tabla acumulada con 16 puntos","Dato de la corrida anterior; no se verificó la tabla de hoy."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
+
+/* ================= MANANA: lunes 16 ================= */
+{id:"utc-chk",day:"man",t:"15:00",cat:"pe",comp:"Liga 1 · Clausura, fecha 17",star:1,h:["UTC",C.utc],a:["Los Chankas",C.chk],p:null,sc:null,
+ juego:"Se juega en el Héroes de San Ramón de Cajamarca (13:00 en Perú). UTC pelea la permanencia según la corrida anterior.",
+ prensa:[["Programación de la última fecha del Clausura","RPP","https://rpp.pe/futbol/descentralizado/torneo-clausura-2026-fecha-17-con-universitario-alianza-lima-cristal-huancayo-programacion-de-partidos-y-horarios-de-la-ultima-fecha-de-la-liga-1-noticia-1716997"]],
+ dato:["UTC pelea la permanencia con Juan Pablo II, Moquegua y Atlético Grau","Dato de la corrida anterior; no se verificó la tabla actual."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
+
+{id:"cus-adt",day:"man",t:"17:15",cat:"pe",comp:"Liga 1 · Clausura, fecha 17",h:["Cusco FC",C.cus],a:["ADT",C.adt],p:null,sc:null,
+ juego:"Se juega en el Garcilaso de la Vega de Cusco (15:15 en Perú).",
+ prensa:[["Programación de la fecha 17 del Clausura","El Comercio (Perú)","https://elcomercio.pe/deporte-total/futbol-peruano/liga-1-2026-en-vivo-asi-se-mueve-la-tabla-y-que-equipos-pelean-por-quedarse-con-el-torneo-clausura-tdpe-noticia/"]],
+ dato:["Sin estadística previa verificada","No encontré historial ni forma reciente en las fuentes revisadas."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"},
+
+{id:"moq-gra",day:"man",t:"17:15",cat:"pe",comp:"Liga 1 · Clausura, fecha 17",star:1,h:["CD Moquegua",C.moq],a:["Atlético Grau",C.gra],p:null,sc:null,
+ juego:"Duelo directo por la permanencia, en el 25 de Noviembre de Moquegua (15:15 en Perú), según la corrida anterior.",
+ prensa:[["Programación confirmada de la última fecha","Infobae Perú","https://www.infobae.com/peru/deportes/2026/11/10/programacion-confirmada-de-la-ultima-fecha-del-torneo-clausura-2026-de-la-liga-1-2026-partidos-horarios-y-canales-tv/"]],
+ dato:["Moquegua y Atlético Grau pelean la permanencia","Dato de la corrida anterior; no se verificó la tabla actual."],tips:[],nd:"historial, forma reciente, córners ni tarjetas"}
+];
+
+const SUB={hoy:"Hoy: cierra la Nations League con España-Inglaterra y Bélgica-Italia.",man:"Mañana: tres partidos de la última fecha del Clausura peruano."};
+const PD=[
+ ["Sudamérica después del Mundial",["Messi se retiró de la selección el 6 de octubre de 2026, ante Benín, tras 21 años. Scaloni renovó hasta 2030.","Argentina fue subcampeona del Mundial 2026: perdió la final 1-0 con España.","Uruguay cayó en fase de grupos. Se fue Bielsa y Diego Forlán dirige como interino.","Colombia quedó fuera en octavos, por penales ante Suiza.","A Chile lo dirige Nicolás Córdova y a Perú el brasileño Mano Menezes."]],
+ ["Europa: quién manda en las selecciones",["Zidane dirige a Francia: debutó el 25 de septiembre con 1-0 sobre Turquía.","España lidera su grupo de la Nations League con 5 triunfos en 5; Inglaterra, con 4 triunfos y 1 derrota, suma 12 puntos.","Italia le ganó 3-1 a Francia el 12 de noviembre y llegó con 10 puntos al cierre del grupo A1.","Turquía perdió sus 5 partidos del grupo, con 3 goles a favor y 13 en contra.","Klopp dirige a Alemania, Xavi a Países Bajos y Tuchel a Inglaterra.","Cristiano Ronaldo dejó la selección de Portugal, que ahora dirige Jorge Jesus."]],
+ ["Clubes de Sudamérica: quién manda",["La final de la Copa Libertadores 2026 es Estudiantes vs Palmeiras, el sábado 28 de noviembre a las 17:00 en el Centenario de Montevideo. Reedita la final de 1968, que también se definió ahí.","Estudiantes eliminó a Flamengo por penales en el Maracaná, con Fernando Muslera en el arco. Palmeiras, de Abel Ferreira, dejó fuera a Fluminense también por penales.","Boca Juniors, dirigido por Rodolfo Arruabarrena, ganó la Tabla Anual argentina y juega la final de la Copa Sudamericana ante Atlético Mineiro el 21 de noviembre.","Carlo Ancelotti dirige a Brasil: 12 triunfos en 20 partidos, pero cayó en octavos del Mundial ante la Noruega de Haaland.","Chile estrena torneo: la Copa de la Liga, cuyo campeón va a la Libertadores 2027. La definen Coquimbo Unido y O'Higgins.","En Chile, Universidad de Chile y Universidad Católica pelean el cupo Chile 2 a la Libertadores en las dos últimas fechas."]]
+];
+
+const AL={};
+M.forEach(m=>{if(AL[m.id])m.al=AL[m.id];});
